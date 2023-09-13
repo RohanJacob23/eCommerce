@@ -10,9 +10,15 @@ import {
 } from "@nextui-org/react";
 import NextImage from "next/image";
 
-export default function ProductCard({ images }: { images: string[] }) {
+export default function ProductCard({
+  images,
+  title,
+}: {
+  images: string[];
+  title: string;
+}) {
   return (
-    <Card className="">
+    <Card className="" isPressable>
       <Image
         as={NextImage}
         isZoomed
@@ -24,7 +30,7 @@ export default function ProductCard({ images }: { images: string[] }) {
         className="h-60 object-fill"
       />
       <CardBody>
-        <p>Make beautiful websites regardless of your design experience.</p>
+        <h1 className="text-xl">{title}</h1>
       </CardBody>
     </Card>
   );

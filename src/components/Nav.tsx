@@ -15,25 +15,17 @@ import {
 import NextLink from "next/link";
 import { AcmeLogo } from "./AcmeLogo";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "./ThemeSwitch";
+import { ExitIcon } from "@radix-ui/react-icons";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Nav() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+  const menuItems = ["Home", "Store", "Customers", "Log Out"];
   const navbarItem = ["Home", "Store", "Customers"];
   return (
-    <Navbar shouldHideOnScroll onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen}>
       {/* navbar logo and menu icon */}
       <NavbarContent>
         <NavbarMenuToggle
@@ -72,6 +64,9 @@ export default function Nav() {
         ))}
       </NavbarContent>
       <NavbarContent justify="end">
+        <NavbarItem className="hidden md:block">
+          <ThemeSwitch />
+        </NavbarItem>
         <NavbarItem className="hidden lg:flex">
           <Link as={NextLink} href="#">
             Login
@@ -88,23 +83,32 @@ export default function Nav() {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              as={NextLink}
-              className="w-full"
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
+            {item === "Log Out" ? (
+              <div className="flex items-center">
+                <h1 className="text-danger">Delete user</h1>
+                <ExitIcon className="h-4 w-4 ml-2 text-danger" />
+              </div>
+            ) : (
+              <Link
+                color={
+                  (pathname === "/" && item === "Home") ||
+                  pathname.includes(item.toLowerCase())
+                    ? "primary"
+                    : "foreground"
+                }
+                as={NextLink}
+                href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                onClick={() => setIsMenuOpen(false)}
+                size="lg"
+              >
+                {item}
+              </Link>
+            )}
           </NavbarMenuItem>
         ))}
+        <div className="absolute top-4 right-4">
+          <ModeToggle />
+        </div>
       </NavbarMenu>
     </Navbar>
   );

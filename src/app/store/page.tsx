@@ -25,10 +25,17 @@ async function getData(): Promise<{
 export default async function page() {
   const { products } = await getData();
   return (
-    <main>
-      <section className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8">
+    <main className="px-4 py-4 md:px-8">
+      <section className="text-center mb-8">
+        <h1 className="text-4xl font-bold">SHOP ALL</h1>
+      </section>
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8">
         {products.map((product) => (
-          <ProductCard key={product.id} images={product.images} />
+          <ProductCard
+            key={product.id}
+            images={product.images}
+            title={product.title}
+          />
         ))}
       </section>
     </main>
