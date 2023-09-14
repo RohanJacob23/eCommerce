@@ -70,6 +70,13 @@
   * {
     @apply border-border;
   }
+  html,
+  body {
+    @apply min-h-screen;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
     @apply text-foreground;
   }
