@@ -80,4 +80,42 @@
   body {
     @apply text-foreground;
   }
+
+  /* scrollbar styling */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary);
+  }
+
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    width: 6px;
+    width: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar-track:hover {
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar-track:active {
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: hsl(212 100% 47%);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(#212 100% 47%);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background-color: hsl(#212 100% 47%);
+  }
 }

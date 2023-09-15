@@ -27,7 +27,7 @@ export default function ProductCard({
         height={800}
         alt="NextUI hero Image"
         src={images[0]}
-        className="h-28 object-fill"
+        className="h-36 object-fill"
       />
       <CardBody>
         <h1 className="text-lg font-semibold">{title}</h1>
