@@ -12,9 +12,7 @@ async function getData(category: string | string[] | undefined): Promise<{
   const url = category
     ? `https://dummyjson.com/products/category/${category}`
     : `https://dummyjson.com/products`;
-  const res = await fetch(url, {
-    next: { revalidate: 3600 },
-  });
+  const res = await fetch(url, { cache: "no-store" });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -53,7 +51,7 @@ export default async function page({
         <h1 className="hidden md:block text-4xl font-bold text-center mb-8">
           SHOP ALL
         </h1>
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-8">
+        <section className="grid justify-items-center grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-8">
           {products.map((product) => (
             <ProductCard
               key={product.id}

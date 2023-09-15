@@ -18,7 +18,7 @@ export default function ProductCard({
   title: string;
 }) {
   return (
-    <Card className="" isPressable>
+    <Card className="max-w-[16rem]" isPressable>
       <Image
         as={NextImage}
         isZoomed

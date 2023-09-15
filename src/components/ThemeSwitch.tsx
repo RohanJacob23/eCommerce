@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch } from "@nextui-org/react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
 export default function ThemeSwitch() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   return (
     <Switch
       defaultSelected
