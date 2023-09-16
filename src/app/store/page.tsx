@@ -1,4 +1,5 @@
 import CategorySelection from "@/components/CategorySelection";
+import LoadMore from "@/components/LoadMore";
 import ProductCard from "@/components/ProductCard";
 import { Products } from "@/types/type";
 import React from "react";
@@ -10,7 +11,7 @@ async function getData(category: string | string[] | undefined): Promise<{
   limit: number;
 }> {
   const url = category
-    ? `https://dummyjson.com/products/category/${category}`
+    ? `https://dummyjson.com/products/category/${category}?limit=100`
     : `https://dummyjson.com/products`;
   const res = await fetch(url, { cache: "no-store" });
   // The return value is *not* serialized
@@ -60,6 +61,7 @@ export default async function page({
             />
           ))}
         </section>
+        <LoadMore products={products} />
       </section>
     </main>
   );

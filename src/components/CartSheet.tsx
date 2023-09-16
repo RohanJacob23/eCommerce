@@ -52,7 +52,7 @@ export default function CartSheet() {
         <SheetHeader className="my-4 text-left">
           <SheetTitle>My Cart</SheetTitle>
         </SheetHeader>
-        <div className="space-y-4 h-1/2 overflow-y-auto px-2">
+        <div className="space-y-4 grow overflow-y-auto px-2 mb-4">
           {Array.from({ length: 8 }, (_, i) => (
             <div key={i}>
               <div className="flex items-center justify-between">
@@ -87,13 +87,31 @@ export default function CartSheet() {
             </div>
           ))}
         </div>
-        <SheetFooter>
+        <SheetFooter className="flex-col sm:flex-col md:flex-col justify-end">
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center justify-between">
+              <p className="opacity-50">Taxes</p>
+              <p>0</p>
+            </div>
+            <Divider />
+            <div className="flex items-center justify-between">
+              <p className="opacity-50">Shipping</p>
+              <p>20</p>
+            </div>
+            <Divider />
+            <div className="flex items-center justify-between">
+              <p className="opacity-50">Total</p>
+              <p>120</p>
+            </div>
+            <Divider />
+          </div>
+
           <SheetClose asChild>
             <Button
               type="submit"
               color="primary"
               radius="full"
-              className="w-full"
+              className="w-full mt-4"
             >
               Save changes
             </Button>
