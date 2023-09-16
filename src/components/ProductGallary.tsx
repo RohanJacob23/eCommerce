@@ -26,7 +26,7 @@ export default function ProductGallary({ images }: { images: string[] }) {
             alt="Product-Image"
             width={500}
             height={500}
-            className="h-full w-20 object-fill"
+            className="h-16 w-20 object-fill"
           />
         ))}
       </div>
