@@ -58,18 +58,19 @@ export default function LoadMore({ products }: { products: Products[] }) {
           ))}
         </section>
       )}
-      {newProduct?.products.length !== 70 && (
-        <div className="flex justify-center mt-4">
-          <Button
-            color="primary"
-            onClick={fetchMoreData}
-            isLoading={isLoading}
-            variant="ghost"
-          >
-            Load More
-          </Button>
-        </div>
-      )}
+      {newProduct?.products.length !== 70 ||
+        (category && (
+          <div className="flex justify-center mt-4">
+            <Button
+              color="primary"
+              onClick={fetchMoreData}
+              isLoading={isLoading}
+              variant="ghost"
+            >
+              Load More
+            </Button>
+          </div>
+        ))}
     </>
   );
 }

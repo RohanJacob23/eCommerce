@@ -17,7 +17,7 @@ export default function ProductGallary({ images }: { images: string[] }) {
         height={500}
         className="max-h-72 w-auto"
       />
-      <div className="flex space-x-2.5 justify-center items-stretch w-full h-16">
+      <div className="flex flex-wrap gap-2.5 justify-center items-stretch w-full h-auto md:h-16">
         {images.map((image, i) => (
           <Image
             key={i}
