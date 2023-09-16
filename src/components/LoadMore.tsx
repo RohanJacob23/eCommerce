@@ -50,6 +50,7 @@ export default function LoadMore({ products }: { products: Products[] }) {
         <section className="grid justify-items-center grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-8 mt-4">
           {newProduct.products.map((product) => (
             <ProductCard
+              id={product.id}
               key={product.id}
               images={product.images}
               title={product.title}

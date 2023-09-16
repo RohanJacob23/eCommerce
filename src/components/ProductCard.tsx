@@ -9,16 +9,24 @@ import {
   Image,
 } from "@nextui-org/react";
 import NextImage from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function ProductCard({
+  id,
   images,
   title,
 }: {
+  id: number;
   images: string[];
   title: string;
 }) {
+  const router = useRouter();
   return (
-    <Card className="max-w-[16rem]" isPressable>
+    <Card
+      className="max-w-[16rem]"
+      isPressable
+      onClick={() => router.push(`/store/${id}`)}
+    >
       <Image
         as={NextImage}
         isZoomed
